@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base Styles ===== */
+:root {
+  --color-bg: #fdf9f2;
+  --color-text: #2a1a0e;
+  --color-surface: #ffffff;
+  --color-border: rgba(74, 47, 23, 0.1);
+}
+
+.dark {
+  --color-bg: #2a1a0e;
+  --color-text: #fdf9f2;
+  --color-surface: #4a2f17;
+  --color-border: rgba(253, 249, 242, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream-50 text-coffee-950 dark:bg-coffee-950 dark:text-cream-50;
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  @apply bg-gold-400 text-coffee-950;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { @apply bg-cream-100 dark:bg-coffee-900; }
+::-webkit-scrollbar-thumb { @apply bg-coffee-400 dark:bg-coffee-600 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-coffee-500 dark:bg-coffee-500; }
+
+/* ===== Glassmorphism ===== */
+.glass {
+  @apply bg-white/70 dark:bg-coffee-900/60 backdrop-blur-lg border border-white/20 dark:border-cream-50/10;
+}
+
+.glass-card {
+  @apply bg-white/60 dark:bg-coffee-900/50 backdrop-blur-xl border border-white/30 dark:border-cream-50/10 rounded-2xl shadow-glass;
+}
+
+.glass-nav {
+  @apply bg-cream-50/80 dark:bg-coffee-950/80 backdrop-blur-xl border-b border-coffee-200/50 dark:border-cream-50/10;
+}
+
+/* ===== Typography ===== */
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #d4ad42 0%, #c4952e 50%, #e0c46e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-coffee {
+  background: linear-gradient(135deg, #9e6329 0%, #5e3b1c 50%, #b87d3e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Shimmer Effect ===== */
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(212, 173, 66, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ===== Hover Lift ===== */
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-glass-lg;
+}
+
+/* ===== Scroll Animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Loading Animation ===== */
+.coffee-loader {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(184, 125, 62, 0.2);
+  border-top-color: #b87d3e;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Page Transition ===== */
+.page-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ===== Focus States ===== */
+*:focus-visible {
+  @apply outline-none ring-2 ring-gold-400 ring-offset-2 ring-offset-cream-50 dark:ring-offset-coffee-950;
+  border-radius: 4px;
+}
+
+/* ===== Skip Link ===== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  @apply bg-gold-500 text-coffee-950 px-4 py-2 z-[100] font-semibold;
+  transition: top 0.3s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ===== WhatsApp Float Button ===== */
+.whatsapp-float {
+  animation: float 3s ease-in-out infinite;
+}
